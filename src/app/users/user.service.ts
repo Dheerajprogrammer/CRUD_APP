@@ -11,8 +11,17 @@ export class UserService {
           console.log("Github Service is ready...");          
       }
       getUser(){
-          return this._http.get("http://api.github.com/users/"+this.username)
+          return this._http.get("https://api.github.com/users?since=135")
           .map(res => res.json())
       }
+      
+      getFollowers(name){
+        return this._http.get("https://api.github.com/users/"+name+"/followers")
+        .map(res => res.json())
+    }
+    userDetail(name){
+      return this._http.get("https://api.github.com/users/"+name)
+      .map(res => res.json())
+  }
 
 }
